@@ -1,0 +1,45 @@
+<h2 class="main-heading">QuizMaker</h2>
+
+<!-- Whole section for the questions to generate -->
+<div class="selection-container">
+  <!-- Display the category for questions -->
+  <div>
+    <label for="categorySelect"></label>
+    <select
+      id="categorySelect"
+      (change)="onCategoryChange($event)"
+      placeholder="Select Category"
+    >
+      <option value="-1">Select Category</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Display the difficulty for the question -->
+  <div>
+    <label for="difficultySelect"></label>
+    <select
+      id="difficultySelect"
+      (change)="onDifficultyChange($event)"
+      placeholder="Select Difficulty"
+    >
+      <option value="-1">Select Difficulty</option>
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+  </div>
+
+  <!-- create button for the questions tp generate with the user selected category and the user difficulty level -->
+  <div>
+    <button id="createBtn" (click)="createQuiz()">Create Quiz</button>
+  </div>
+</div>
+<div class="quiz-container">
+  <app-quiz-questions
+    [quizQuestions]="quizQuestions"
+    [correctAnswers]="correctAnswers"
+  ></app-quiz-questions>
+</div>

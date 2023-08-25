@@ -1,0 +1,42 @@
+.main-heading {
+    text-align: center;
+}
+
+.selection-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+#categorySelect {
+    padding: 4px;
+}
+
+#difficultySelect {
+    padding: 4px;
+}
+
+#createBtn {
+    padding: 4px;
+}
+
+/* Center the quiz container */
+.quiz-container {
+    display: flex;
+    align-content: center;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.submit-button {
+    padding: 5px;
+}

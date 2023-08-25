@@ -1,0 +1,42 @@
+<!-- Questions created when the create button is been pressed by the user  -->
+<div class="quiz-container">
+  <div *ngIf="quizQuestions && quizQuestions.length > 0">
+    <div
+      *ngFor="let question of quizQuestions; let questionIndex = index"
+      class="question-container"
+    >
+      <p class="questionDisplay">
+        {{ question.question }}
+      </p>
+
+      <!-- Displaying the options -->
+      <div class="options-container">
+        <div *ngFor="let option of question.options">
+          <button
+            (click)="selectOption(option, questionIndex)"
+            [ngClass]="{
+              'option-button': true,
+              success:
+                optionSelected(option, questionIndex) ||
+                answerIsCorrect(option, questionIndex),
+              error: answerIsWrong(option, questionIndex),
+              disabled: isFormSubmitted
+            }"
+            id="clickOption"
+          >
+            {{ option }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="submit-button-container" *ngIf="!isResultsPage">
+      <button
+        class="submit-button"
+        (click)="submitQuiz()"
+        *ngIf="quizQuestions.length === selectedOption.length"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

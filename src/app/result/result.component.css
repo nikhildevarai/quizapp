@@ -1,0 +1,38 @@
+.score-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.score {
+    background: black;
+}
+
+.score.bg-red {
+    background: red;
+}
+
+.score.bg-yellow {
+    background: yellow;
+}
+
+.score.bg-green {
+    background: green;
+}
+
+.results{
+    display: flex;
+    justify-content: center;
+}
+
+.createnewquiz{
+    justify-content: center;
+    display: flex;
+    padding: 5px; 
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.createnewquiz button{
+    width:40%;
+    padding: 5px
+}
