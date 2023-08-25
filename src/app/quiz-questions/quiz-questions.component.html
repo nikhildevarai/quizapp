@@ -29,7 +29,10 @@
         </div>
       </div>
     </div>
-    <div class="submit-button-container" *ngIf="!isResultsPage">
+    <div
+      class="submit-button-container"
+      *ngIf="!isResultsPage && selectedOption.length === 5"
+    >
       <button
         class="submit-button"
         (click)="submitQuiz()"
