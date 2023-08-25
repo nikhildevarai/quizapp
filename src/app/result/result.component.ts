@@ -47,6 +47,6 @@ export class ResultComponent implements OnInit {
   }
 
   createNewQuiz() {
-    this.route.navigate(['/quiz']);
+    this.route.navigate(['']);
   }
 }

@@ -4,8 +4,7 @@ import { ResultComponent } from './result/result.component';
 import { QuizMakerComponent } from './quiz-maker/quiz-maker.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/quiz', pathMatch: 'full' },
-  { path: 'quiz', component: QuizMakerComponent },
+  { path: '', component: QuizMakerComponent },
   { path: 'result', component: ResultComponent },
 ];
 
