@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { questionModel } from '../app.model';
 
 @Component({
   selector: 'app-quiz-questions',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./quiz-questions.component.css'],
 })
 export class QuizQuestionsComponent {
-  @Input() quizQuestions: any = [];
+  @Input() quizQuestions: questionModel[] = [];
   @Input() correctAnswers: string[] = [];
   @Input() toJudge: string[] = [];
   @Input() isResultsPage: boolean = false;
@@ -63,5 +64,11 @@ export class QuizQuestionsComponent {
     );
     localStorage.setItem('correctAnswers', JSON.stringify(this.correctAnswers));
     this.router.navigate(['/result']);
+  }
+
+  decodeEntities(encodedString: string) {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = encodedString;
+    return textArea.value;
   }
 }

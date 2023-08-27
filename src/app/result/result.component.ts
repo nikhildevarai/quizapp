@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Import ActivatedRoute
+import { questionModel } from '../app.model';
 // ... (other imports)
 
 @Component({
@@ -8,7 +9,7 @@ import { Router } from '@angular/router'; // Import ActivatedRoute
   styleUrls: ['./result.component.css'],
 })
 export class ResultComponent implements OnInit {
-  quizQuestions: any[] = [];
+  quizQuestions: questionModel[] = [];
   selectedAnswers: string[] = [];
   correctAnswers: string[] = [];
   scoreReady: boolean = false;

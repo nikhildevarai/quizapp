@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CategoryService } from 'src/services/categoryServices';
 import { QuizQuestionsService } from 'src/services/quizQuestionService';
-import { QuizService } from 'src/services/quizService';
 import { ResultComponent } from './result/result.component';
 import { QuizMakerComponent } from './quiz-maker/quiz-maker.component';
 import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
@@ -20,7 +19,7 @@ import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.componen
     QuizQuestionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [CategoryService, QuizQuestionsService, QuizService],
+  providers: [CategoryService, QuizQuestionsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

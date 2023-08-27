@@ -2,7 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/services/categoryServices';
 import { QuizQuestionsService } from 'src/services/quizQuestionService';
-import { QuizService } from 'src/services/quizService';
+import {
+  AnswersModel,
+  ResultsApiResponse,
+  categoriesModel,
+  categoryListModel,
+  questionModel,
+} from '../app.model';
 
 @Component({
   selector: 'app-quiz-maker',
@@ -10,15 +16,14 @@ import { QuizService } from 'src/services/quizService';
   styleUrls: ['./quiz-maker.component.css'],
 })
 export class QuizMakerComponent {
-  categories: any[] = [];
+  categories: categoriesModel[] = [];
   selectedCategory: string | null = null;
   selectedDifficulty: string | null = null;
-  quizQuestions: any[] = [];
+  quizQuestions: questionModel[] = [];
   correctAnswers: string[] = [];
 
   constructor(
     private categoryService: CategoryService,
-    private quizService: QuizService,
     private quizQuestionsService: QuizQuestionsService,
     private router: Router
   ) {}
@@ -33,19 +38,21 @@ export class QuizMakerComponent {
 
   // Implementing the CategoryService in the quiz component
   fetchCategories() {
-    this.categoryService.fetchCategories().subscribe((data: any) => {
-      this.categories = data.trivia_categories;
-    });
+    this.categoryService
+      .fetchCategories()
+      .subscribe((data: categoryListModel) => {
+        this.categories = data.trivia_categories;
+      });
   }
 
   // For the selectCategory button to show the dropdown when the user tries to select the dropdown
-  onCategoryChange(event: any) {
-    this.selectedCategory = event.target.value;
+  onCategoryChange(event: Event): void {
+    this.selectedCategory = (event.target as HTMLSelectElement).value;
   }
 
   // For the difficultyCategory button to show the dropdown when the user tries to select the dropdown
-  onDifficultyChange(event: any) {
-    this.selectedDifficulty = event.target.value;
+  onDifficultyChange(event: Event): void {
+    this.selectedDifficulty = (event.target as HTMLSelectElement).value;
   }
 
   shuffleArray = (array: string[]): string[] => {
@@ -73,10 +80,10 @@ export class QuizMakerComponent {
       // Fetch quiz questions using the QuizQuestionsService
       this.quizQuestionsService
         .fetchQuizQuestions(apiUrl)
-        .subscribe((quizQuestions: any) => {
+        .subscribe((quizQuestions: ResultsApiResponse) => {
           this.correctAnswers = [];
           this.quizQuestions = quizQuestions.results.map(
-            (item: any, index: number) => {
+            (item: AnswersModel, index: number) => {
               this.correctAnswers[index] = item.correct_answer;
               const options = [...item.incorrect_answers, item.correct_answer];
               const shaffledOptions = this.shuffleArray(options);

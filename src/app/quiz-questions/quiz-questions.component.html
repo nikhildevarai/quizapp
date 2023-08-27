@@ -6,7 +6,7 @@
       class="question-container"
     >
       <p class="questionDisplay">
-        {{ question.question }}
+        {{ decodeEntities(question.question) }}
       </p>
 
       <!-- Displaying the options -->
@@ -24,7 +24,7 @@
             }"
             id="clickOption"
           >
-            {{ option }}
+            {{ decodeEntities(option) }}
           </button>
         </div>
       </div>
